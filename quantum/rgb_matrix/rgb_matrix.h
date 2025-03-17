@@ -24,6 +24,7 @@
 #include "rgb_matrix_drivers.h"
 #include "color.h"
 #include "keyboard.h"
+#include "openrgb.h"
 
 #ifndef RGB_MATRIX_TIMEOUT
 #    define RGB_MATRIX_TIMEOUT 0
@@ -54,11 +55,15 @@
 #endif
 
 #ifndef RGB_MATRIX_DEFAULT_MODE
-#    ifdef ENABLE_RGB_MATRIX_CYCLE_LEFT_RIGHT
-#        define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_CYCLE_LEFT_RIGHT
+#    ifdef OPENRGB_ENABLE
+#        define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_OPENRGB_DIRECT
 #    else
+#        ifdef ENABLE_RGB_MATRIX_CYCLE_LEFT_RIGHT
+#            define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_CYCLE_LEFT_RIGHT
+#        else
 // fallback to solid colors if RGB_MATRIX_CYCLE_LEFT_RIGHT is disabled in userspace
-#        define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_COLOR
+#            define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_COLOR
+#        endif
 #    endif
 #endif
 
