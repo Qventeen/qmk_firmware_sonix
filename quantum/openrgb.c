@@ -29,7 +29,6 @@
 #include "raw_hid.h"
 #include "string.h"
 #include <color.h>
-#include KEYMAP_INTROSPECTION_C
 
 #if !defined(OPENRGB_DIRECT_MODE_STARTUP_RED)
 #    define OPENRGB_DIRECT_MODE_STARTUP_RED 0
